@@ -8,3 +8,13 @@ li{
     list-style: none;
 }
 
+li>div{
+    display: flex;
+    gap: 10px;
+}
+
+.to-do-item{
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+}
