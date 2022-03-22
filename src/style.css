@@ -20,6 +20,10 @@ li{
     box-shadow: 1px 6px 10px grey;
 }
 
+.fa-rotate{
+    color: gray;
+}
+
 li>div{
     display: flex;
     align-items: center;
