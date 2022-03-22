@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
+eval("const toDo = [\r\n    {\r\n        description: 'Arrange room',\r\n        completed: false,\r\n        index: 1,\r\n    },\r\n    {\r\n        description: 'Read a book',\r\n        completed: false,\r\n        index: 2,\r\n    },\r\n    {\r\n        description: 'Study javascript',\r\n        completed: false,\r\n        index: 3,\r\n    },\r\n    {\r\n        description: 'Work on personal project',\r\n        completed: false,\r\n        index: 4,\r\n    },\r\n    {\r\n        description: 'Talk to friends',\r\n        completed: false,\r\n        index: 5,\r\n    }\r\n]\r\n\r\nconst listHolder = document.querySelector('.holder')\r\n\r\ntoDo.map((item) => {\r\n    let li = document.createElement('li')\r\n    li.classList.add('to-do-item')\r\n    li.innerHTML = `${(item.completed) ? '<i class=\"fa-solid fa-square-check\"></i>' : '<i class=\"fa-solid fa-square\"></i>'\r\n        } <p>${item.description}</p>`\r\n    listHolder.appendChild(li);\r\n});\n\n//# sourceURL=webpack://to-do-list/./src/index.js?");
 
 /***/ })
 

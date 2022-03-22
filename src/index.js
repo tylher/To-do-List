@@ -28,9 +28,10 @@ const toDo = [
 
 const listHolder = document.querySelector('.holder')
 
-toDo.map(( item) => {
+toDo.map((item) => {
     let li = document.createElement('li')
     li.classList.add('to-do-item')
-    li.innerHTML=`${item.description}`
+    li.innerHTML = `${(item.completed) ? '<i class="fa-solid fa-square-check"></i>' : '<i class="fa-solid fa-square"></i>'
+        } <p>${item.description}</p>`
     listHolder.appendChild(li);
 });
