@@ -1,15 +1,16 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# To-do List
 
-> Description the project.
-
+> This project lets you create a to-do list for activities you need to do for some time. Each activity has a box that can be checked when completed
+ - Set up webpack for project
+ - Implemented logic to populate list 
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- HTML, CSS, JavaScript
+- none
+- webpack, Node
 
 ## Live Demo (if available)
 
