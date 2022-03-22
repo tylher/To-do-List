@@ -36,6 +36,6 @@ toDo.map((item) => {
     item.completed
       ? '<i class="fa-solid fa-square-check"></i>'
       : '<i class="fa-solid fa-square"></i>'
-  } <p>${item.description}</p><div>`;
+  } <p>${item.description}</p></div> <i class="option fa-solid fa-ellipsis-vertical"></i>`;
   listHolder.appendChild(li);
 });
