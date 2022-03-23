@@ -6,6 +6,7 @@ export default class ToDo {
     this.listHolder = document.querySelector('.holder');
     this.itemInput = document.querySelector('input');
     this.enter = document.querySelector('.fa-arrow-right-to-bracket');
+    this.remove = document.querySelector('.btn');
   }
 
   createItem(item) {
@@ -21,14 +22,14 @@ export default class ToDo {
   addItem() {
     this.enter.addEventListener('click', () => {
       if (this.itemInput.value) {
-        console.log(this.itemInput.value);
         this.toDo = JSON.parse(localStorage.getItem('to-do'));
-        let newItem = this.itemInput.value;
-        const listItem = new ItemObj(this.toDo.length, newItem);
+        const newItem = this.itemInput;
+        const listItem = new ItemObj(this.toDo.length, newItem.value);
         this.toDo.push(listItem);
         localStorage.setItem('to-do', JSON.stringify(this.toDo));
-        this.createItem(listItem);
-        newItem = '';
+        newItem.value = '';
+        this.listHolder.innerHTML = '';
+        this.getTodo();
       }
     });
   }
@@ -43,6 +44,16 @@ export default class ToDo {
         localStorage.setItem('to-do', JSON.stringify(this.toDo));
         this.getTodo();
       });
+    });
+  }
+
+  removeItem() {
+    this.remove.addEventListener('click', () => {
+      console.log('delete');
+      this.toDo = this.toDo.filter((item) => item.completed === false);
+      localStorage.setItem('to-do', JSON.stringify(this.toDo));
+      this.listHolder.innerHTML = '';
+      this.getTodo();
     });
   }
 
