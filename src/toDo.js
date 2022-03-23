@@ -49,7 +49,6 @@ export default class ToDo {
 
   removeItem() {
     this.remove.addEventListener('click', () => {
-      console.log('delete');
       this.toDo = this.toDo.filter((item) => item.completed === false);
       localStorage.setItem('to-do', JSON.stringify(this.toDo));
       this.listHolder.innerHTML = '';
