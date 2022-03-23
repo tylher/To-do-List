@@ -43,7 +43,9 @@ li > div {
 }
 
 input {
-  width: 100%;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
   border: none;
   font-style: italic;
   font-weight: 500;
