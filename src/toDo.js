@@ -95,6 +95,7 @@ export default class ToDo {
       localStorage.setItem('to-do', JSON.stringify(this.toDo));
     } else {
       this.toDo = JSON.parse(localStorage.getItem('to-do'));
+<<<<<<< HEAD
       this.toDo.map((item, index) => {
         this.createItem(item);
         const itemEdit = document.querySelectorAll('.item-edit');
@@ -102,6 +103,16 @@ export default class ToDo {
           itemEdit[index].style.textDecoration = 'line-through';
         }
 
+=======
+      this.toDo.map((item) => {
+        this.createItem(item);
+        const itemEdit = document.querySelectorAll('.item-edit');
+        if (item.completed === true) {
+          itemEdit.forEach((input) => {
+            input.style.textDecoration = 'line-through';
+          });
+        }
+>>>>>>> 40ba442 (Revert gh-page deploy)
         return '';
       });
       this.updateIndex();
