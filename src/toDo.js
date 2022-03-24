@@ -15,8 +15,20 @@ export default class ToDo {
     li.innerHTML = `<div>${item.completed
       ? '<i class="btn-check fa-solid fa-square-check"></i>'
       : '<i class="btn-check fa-solid fa-square"></i>'
-    } <p>${item.description}</p></div> <i class="option fa-solid fa-ellipsis-vertical"></i>`;
+    } <input type='text' class='item-edit' value='${item.description}'></div> <i class="option fa-solid fa-ellipsis-vertical"></i>`;
     this.listHolder.appendChild(li);
+  }
+
+  updateItem() {
+    const itemEdit = document.querySelectorAll('.item-edit');
+    itemEdit.forEach((item, index) => {
+      item.addEventListener('focusout', () => {
+        this.toDo = JSON.parse(localStorage.getItem('to-do'));
+        this.toDo[index].description = item.value;
+        localStorage.setItem('to-do', JSON.stringify(this.toDo));
+      });
+      return '';
+    });
   }
 
   addItem() {
@@ -48,7 +60,8 @@ export default class ToDo {
   }
 
   removeItem() {
-    this.remove.addEventListener('click', () => {
+    this.remove.addEventListener('click', (e) => {
+      e.preventDefault();
       this.toDo = this.toDo.filter((item) => item.completed === false);
       localStorage.setItem('to-do', JSON.stringify(this.toDo));
       this.listHolder.innerHTML = '';
@@ -66,6 +79,7 @@ export default class ToDo {
         return '';
       });
       this.checkItem();
+      this.updateItem();
     }
   }
 }
