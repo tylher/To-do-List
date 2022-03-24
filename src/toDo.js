@@ -96,6 +96,7 @@ export default class ToDo {
     } else {
       this.toDo = JSON.parse(localStorage.getItem('to-do'));
 <<<<<<< HEAD
+<<<<<<< HEAD
       this.toDo.map((item, index) => {
         this.createItem(item);
         const itemEdit = document.querySelectorAll('.item-edit');
@@ -105,14 +106,19 @@ export default class ToDo {
 
 =======
       this.toDo.map((item) => {
+=======
+      this.toDo.map((item, index) => {
+>>>>>>> 6afdc12 (Fix checkbox issue)
         this.createItem(item);
         const itemEdit = document.querySelectorAll('.item-edit');
         if (item.completed === true) {
-          itemEdit.forEach((input) => {
-            input.style.textDecoration = 'line-through';
-          });
+          itemEdit[index].style.textDecoration = 'line-through';
         }
+<<<<<<< HEAD
 >>>>>>> 40ba442 (Revert gh-page deploy)
+=======
+
+>>>>>>> 6afdc12 (Fix checkbox issue)
         return '';
       });
       this.updateIndex();
