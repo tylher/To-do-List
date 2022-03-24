@@ -95,14 +95,13 @@ export default class ToDo {
       localStorage.setItem('to-do', JSON.stringify(this.toDo));
     } else {
       this.toDo = JSON.parse(localStorage.getItem('to-do'));
-      this.toDo.map((item) => {
+      this.toDo.map((item, index) => {
         this.createItem(item);
         const itemEdit = document.querySelectorAll('.item-edit');
         if (item.completed === true) {
-          itemEdit.forEach((input) => {
-            input.style.textDecoration = 'line-through';
-          });
+          itemEdit[index].style.textDecoration = 'line-through';
         }
+
         return '';
       });
       this.updateIndex();
