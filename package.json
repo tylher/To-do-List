@@ -6,9 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "webpack serve --open",
-    "deploy": "npm run gh-pages",
-  "gh-pages": "gh-pages -d dist -b add-remove"
+    "start": "webpack serve --open"
   },
   "repository": {
     "type": "git",
@@ -20,14 +18,13 @@
   "bugs": {
     "url": "https://github.com/tylher/To-do-List/issues"
   },
-  "homepage": "https://github.com/tylher/To-do-List",
+  "homepage": "https://github.com/tylher/To-do-List/dist/#index",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.25.4",
-    "gh-pages": "^3.2.3",
     "hint": "^6.1.10",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
