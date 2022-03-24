@@ -95,30 +95,12 @@ export default class ToDo {
       localStorage.setItem('to-do', JSON.stringify(this.toDo));
     } else {
       this.toDo = JSON.parse(localStorage.getItem('to-do'));
-<<<<<<< HEAD
-<<<<<<< HEAD
       this.toDo.map((item, index) => {
         this.createItem(item);
         const itemEdit = document.querySelectorAll('.item-edit');
         if (item.completed === true) {
           itemEdit[index].style.textDecoration = 'line-through';
         }
-
-=======
-      this.toDo.map((item) => {
-=======
-      this.toDo.map((item, index) => {
->>>>>>> 6afdc12 (Fix checkbox issue)
-        this.createItem(item);
-        const itemEdit = document.querySelectorAll('.item-edit');
-        if (item.completed === true) {
-          itemEdit[index].style.textDecoration = 'line-through';
-        }
-<<<<<<< HEAD
->>>>>>> 40ba442 (Revert gh-page deploy)
-=======
-
->>>>>>> 6afdc12 (Fix checkbox issue)
         return '';
       });
       this.updateIndex();
