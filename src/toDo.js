@@ -15,7 +15,7 @@ export default class ToDo {
     li.innerHTML = `<div>${item.completed
       ? '<i class="btn-check fa-solid fa-square-check"></i>'
       : '<i class="btn-check fa-solid fa-square"></i>'
-    } <input type='text' class='item-edit' value='${item.description}'></div> <i class="option fa-solid fa-ellipsis-vertical"></i>`;
+    } <input type='text' class='item-edit' value='${item.description}'></div> <div><i class="option fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-trash-can"></i></div>`;
     this.listHolder.appendChild(li);
   }
 
@@ -28,6 +28,16 @@ export default class ToDo {
         localStorage.setItem('to-do', JSON.stringify(this.toDo));
       });
       return '';
+    });
+  }
+
+  deleteItem() {
+    const delIcons = document.querySelectorAll('.fa-trash-can');
+    delIcons.forEach((del, i) => {
+      del.addEventListener('click', () => {
+        this.toDo = this.ToDo.filter((item) => item.index !== i);
+      });
+      this.getTodo();
     });
   }
 
@@ -45,6 +55,10 @@ export default class ToDo {
       }
     });
   }
+
+  // deleteItem() {
+  //   const
+  // }
 
   checkItem() {
     const checked = document.querySelectorAll('.btn-check');
@@ -89,6 +103,7 @@ export default class ToDo {
       this.updateIndex();
       this.checkItem();
       this.updateItem();
+      this.deleteItem();
     }
   }
 }
