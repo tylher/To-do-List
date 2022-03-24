@@ -101,6 +101,7 @@ export default class ToDo {
         if (item.completed === true) {
           itemEdit[index].style.textDecoration = 'line-through';
         }
+
         return '';
       });
       this.updateIndex();
