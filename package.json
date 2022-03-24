@@ -20,18 +20,13 @@
   "bugs": {
     "url": "https://github.com/tylher/To-do-List/issues"
   },
-<<<<<<< HEAD
   "homepage": "https://github.com/tylher/To-do-List/",
-=======
-  "homepage": "https://github.com/tylher/To-do-List",
->>>>>>> 41312cd (deploy app)
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.25.4",
-    "gh-pages": "^3.2.3",
     "hint": "^6.1.10",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
