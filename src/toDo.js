@@ -59,9 +59,17 @@ export default class ToDo {
     });
   }
 
+  updateIndex() {
+    this.toDo = JSON.parse(localStorage.getItem('to-do'));
+    this.toDo.map((item, i) => {
+      item.index = i;
+      localStorage.setItem('to-do', JSON.stringify(this.toDo));
+      return '';
+    });
+  }
+
   removeItem() {
-    this.remove.addEventListener('click', (e) => {
-      e.preventDefault();
+    this.remove.addEventListener('click', () => {
       this.toDo = this.toDo.filter((item) => item.completed === false);
       localStorage.setItem('to-do', JSON.stringify(this.toDo));
       this.listHolder.innerHTML = '';
@@ -78,6 +86,7 @@ export default class ToDo {
         this.createItem(item);
         return '';
       });
+      this.updateIndex();
       this.checkItem();
       this.updateItem();
     }

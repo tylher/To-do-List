@@ -66,3 +66,8 @@ input:focus {
   font-size: 17px;
   color: rgb(121, 121, 121);
 }
+
+.item-edit{
+  font-style: normal;
+  font-size: 20px;
+}
