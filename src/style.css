@@ -71,3 +71,7 @@ input:focus {
   font-style: normal;
   font-size: 20px;
 }
+
+.fa-trash-can,.fa-arrow-right-to-bracket{
+   color: rgb(121, 121, 121);
+}
