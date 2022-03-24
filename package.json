@@ -20,7 +20,11 @@
   "bugs": {
     "url": "https://github.com/tylher/To-do-List/issues"
   },
+<<<<<<< HEAD
   "homepage": "https://github.com/tylher/To-do-List/",
+=======
+  "homepage": "https://github.com/tylher/To-do-List",
+>>>>>>> 1e37bac (deploy site)
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.1",
