@@ -16,7 +16,7 @@ export default class ToDo {
     li.innerHTML = `<div>${item.completed
       ? '<input type="checkbox" checked>'
       : '<input type="checkbox" >'
-    } <input type='text' class='item-edit' value='${item.description}'></div> <i class="option fa-solid fa-ellipsis-vertical"></i>`;
+    } <input type='text' class='item-edit' value='${item.description}'></div> <div><i class="option fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-trash-can"></i></div>`;
     this.listHolder.appendChild(li);
   }
 
@@ -61,6 +61,20 @@ export default class ToDo {
     checked.forEach((check, index) => {
       check.addEventListener('change', () => {
         this.toDo = checkItem(this.toDo, index);
+        this.listHolder.innerHTML = '';
+        this.getTodo();
+      });
+    });
+  }
+
+  deleteItem() {
+    const delIcons = document.querySelectorAll('.fa-trash-can');
+    delIcons.forEach((del, i) => {
+      del.addEventListener('click', () => {
+        this.toDo = this.toDo.filter((item) => item.index !== i);
+        localStorage.setItem('to-do', JSON.stringify(this.toDo));
+        this.listHolder.innerHTML = '';
+        this.getTodo();
       });
     });
   }
@@ -75,17 +89,30 @@ export default class ToDo {
     });
   }
 
+  refreshList() {
+    const refreshBtn = document.querySelector('.fa-rotate');
+    refreshBtn.addEventListener('click', () => {
+      localStorage.setItem('to-do', '[]');
+      this.listHolder.innerHTML = '';
+      this.getTodo();
+    });
+  }
+
   getTodo() {
     if (!localStorage.getItem('to-do')) {
       localStorage.setItem('to-do', JSON.stringify(this.toDo));
     } else {
       this.toDo = JSON.parse(localStorage.getItem('to-do'));
-      this.toDo.map((item) => {
+      this.toDo.map((item, index) => {
         this.createItem(item);
+        const itemEdit = document.querySelectorAll('.item-edit');
+        if (item.completed === true) {
+          itemEdit[index].style.textDecoration = 'line-through';
+        }
         return '';
       });
       this.updateIndex();
-      this.removeItems();
+      this.deleteItem();
       this.updateItem();
       this.UpdateCheck();
     }
