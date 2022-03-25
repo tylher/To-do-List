@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: rgb(226, 226, 226);
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 600px;
+  margin: 100px auto;
+  border-left: 1px rgb(201, 201, 201) solid;
+  border-right: 1px rgb(201, 201, 201) solid;
+  box-shadow: 1px 6px 15px rgb(92, 92, 92);
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fa-rotate {
+  color: gray;
+}
+
+.refresh-rotate {
+  animation: rotate 0.5s  ease;
+}
+
+li > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.to-do-item {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px rgb(201, 201, 201) solid;
+}
+
+.option {
+  color: grey;
+}
+
+input[type='text'] {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  border: none;
+  font-style: italic;
+  font-weight: 500;
+}
+
+input:focus {
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  border: none;
+  background-color: rgb(190, 189, 189);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-size: 17px;
+  color: rgb(121, 121, 121);
+}
+
+.item-edit {
+  font-style: normal !important;
+  font-size: 20px;
+}
+
+.fa-trash-can,
+.fa-arrow-right-to-bracket {
+  color: rgb(121, 121, 121);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    max-width: 100%;
+    margin: 30px;
+  }
+}
