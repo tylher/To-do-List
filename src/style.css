@@ -23,6 +23,10 @@ li {
   color: gray;
 }
 
+.refresh-rotate{
+animation: rotate 0.5s  ease ;
+}
+
 li > div {
   display: flex;
   align-items: center;
@@ -75,4 +79,14 @@ input:focus {
 .fa-trash-can,
 .fa-arrow-right-to-bracket {
   color: rgb(121, 121, 121);
+}
+
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg);
+  }
+
+  100%{
+    transform: rotate(360deg);
+  }
 }

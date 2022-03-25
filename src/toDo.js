@@ -92,6 +92,10 @@ export default class ToDo {
   refreshList() {
     const refreshBtn = document.querySelector('.fa-rotate');
     refreshBtn.addEventListener('click', () => {
+      refreshBtn.classList.add('refresh-rotate');
+      setTimeout(() => {
+        refreshBtn.classList.remove('refresh-rotate');
+      }, 500);
       localStorage.setItem('to-do', '[]');
       this.listHolder.innerHTML = '';
       this.getTodo();
