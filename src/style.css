@@ -42,7 +42,7 @@ li > div {
   color: grey;
 }
 
-input {
+input[type = 'text'] {
   width: 90%;
   display: flex;
   flex-wrap: wrap;
