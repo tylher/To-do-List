@@ -7,7 +7,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
   background-color: rgb(226, 226, 226);
 }
 
@@ -30,8 +30,8 @@ li {
   color: gray;
 }
 
-.refresh-rotate{
-animation: rotate 0.5s  ease ;
+.refresh-rotate {
+  animation: rotate 0.5s  ease;
 }
 
 li > div {
@@ -53,7 +53,7 @@ li > div {
   color: grey;
 }
 
-input[type = 'text'] {
+input[type='text'] {
   width: 90%;
   display: flex;
   flex-wrap: wrap;
@@ -89,17 +89,17 @@ input:focus {
 }
 
 @keyframes rotate {
-  0%{
+  0% {
     transform: rotate(0deg);
   }
 
-  100%{
+  100% {
     transform: rotate(360deg);
   }
 }
 
-@media screen and (max-width:576px) {
-  .container{
+@media screen and (max-width: 576px) {
+  .container {
     max-width: 100%;
     margin: 30px;
   }
