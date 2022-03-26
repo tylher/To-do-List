@@ -7,6 +7,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+body {
+  background-color: rgb(226, 226, 226);
+}
+
 li {
   list-style: none;
 }
@@ -16,11 +20,18 @@ li {
   margin: 100px auto;
   border-left: 1px rgb(201, 201, 201) solid;
   border-right: 1px rgb(201, 201, 201) solid;
-  box-shadow: 1px 6px 10px grey;
+  box-shadow: 1px 6px 15px rgb(92, 92, 92);
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .fa-rotate {
   color: gray;
+}
+
+.refresh-rotate {
+  animation: rotate 0.5s  ease;
 }
 
 li > div {
@@ -42,7 +53,7 @@ li > div {
   color: grey;
 }
 
-input {
+input[type='text'] {
   width: 90%;
   display: flex;
   flex-wrap: wrap;
@@ -68,11 +79,28 @@ input:focus {
 }
 
 .item-edit {
-  font-style: normal;
+  font-style: normal !important;
   font-size: 20px;
 }
 
 .fa-trash-can,
 .fa-arrow-right-to-bracket {
   color: rgb(121, 121, 121);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    max-width: 100%;
+    margin: 30px;
+  }
 }

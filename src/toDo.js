@@ -1,4 +1,5 @@
 import ItemObj from './item.js';
+import checkItem from './check.js';
 
 export default class ToDo {
   constructor() {
@@ -13,10 +14,9 @@ export default class ToDo {
     const li = document.createElement('li');
     li.classList.add('to-do-item');
     li.innerHTML = `<div>${item.completed
-      ? '<i class="btn-check fa-solid fa-square-check"></i>'
-      : '<i class="btn-check fa-solid fa-square"></i>'
-    } <input type='text' class='item-edit' value='${item.description
-    }'></div> <div><i class="option fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-trash-can"></i></div>`;
+      ? '<input type="checkbox" checked>'
+      : '<input type="checkbox" >'
+    } <input type='text' class='item-edit' value='${item.description}'></div> <div><i class="option fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-trash-can"></i></div>`;
     this.listHolder.appendChild(li);
   }
 
@@ -29,18 +29,6 @@ export default class ToDo {
         localStorage.setItem('to-do', JSON.stringify(this.toDo));
       });
       return '';
-    });
-  }
-
-  deleteItem() {
-    const delIcons = document.querySelectorAll('.fa-trash-can');
-    delIcons.forEach((del, i) => {
-      del.addEventListener('click', () => {
-        this.toDo = this.toDo.filter((item) => item.index !== i);
-        localStorage.setItem('to-do', JSON.stringify(this.toDo));
-        this.listHolder.innerHTML = '';
-        this.getTodo();
-      });
     });
   }
 
@@ -59,19 +47,6 @@ export default class ToDo {
     });
   }
 
-  checkItem() {
-    const checked = document.querySelectorAll('.btn-check');
-    this.toDo = JSON.parse(localStorage.getItem('to-do'));
-    checked.forEach((check, index) => {
-      check.addEventListener('click', () => {
-        this.toDo[index].completed = !this.toDo[index].completed;
-        this.listHolder.innerHTML = '';
-        localStorage.setItem('to-do', JSON.stringify(this.toDo));
-        this.getTodo();
-      });
-    });
-  }
-
   updateIndex() {
     this.toDo = JSON.parse(localStorage.getItem('to-do'));
     this.toDo.map((item, i) => {
@@ -81,10 +56,47 @@ export default class ToDo {
     });
   }
 
-  removeItem() {
+  UpdateCheck() {
+    const checked = document.querySelectorAll('input[type="checkbox"]');
+    checked.forEach((check, index) => {
+      check.addEventListener('change', () => {
+        this.toDo = checkItem(this.toDo, index);
+        this.listHolder.innerHTML = '';
+        this.getTodo();
+      });
+    });
+  }
+
+  deleteItem() {
+    const delIcons = document.querySelectorAll('.fa-trash-can');
+    delIcons.forEach((del, i) => {
+      del.addEventListener('click', () => {
+        this.toDo = this.toDo.filter((item) => item.index !== i);
+        localStorage.setItem('to-do', JSON.stringify(this.toDo));
+        this.listHolder.innerHTML = '';
+        this.getTodo();
+      });
+    });
+  }
+
+  removeItems() {
+    this.toDo = JSON.parse(localStorage.getItem('to-do'));
     this.remove.addEventListener('click', () => {
       this.toDo = this.toDo.filter((item) => item.completed === false);
       localStorage.setItem('to-do', JSON.stringify(this.toDo));
+      this.listHolder.innerHTML = '';
+      this.getTodo();
+    });
+  }
+
+  refreshList() {
+    const refreshBtn = document.querySelector('.fa-rotate');
+    refreshBtn.addEventListener('click', () => {
+      refreshBtn.classList.add('refresh-rotate');
+      setTimeout(() => {
+        refreshBtn.classList.remove('refresh-rotate');
+      }, 500);
+      localStorage.setItem('to-do', '[]');
       this.listHolder.innerHTML = '';
       this.getTodo();
     });
@@ -101,13 +113,12 @@ export default class ToDo {
         if (item.completed === true) {
           itemEdit[index].style.textDecoration = 'line-through';
         }
-
         return '';
       });
       this.updateIndex();
-      this.checkItem();
-      this.updateItem();
       this.deleteItem();
+      this.updateItem();
+      this.UpdateCheck();
     }
   }
 }
