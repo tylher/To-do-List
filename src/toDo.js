@@ -32,19 +32,12 @@ export default class ToDo {
     });
   }
 
-  addItem() {
-    this.enter.addEventListener('click', () => {
-      if (this.itemInput.value) {
-        this.toDo = JSON.parse(localStorage.getItem('to-do'));
-        const newItem = this.itemInput;
-        const listItem = new ItemObj(this.toDo.length, newItem.value);
-        this.toDo.push(listItem);
-        localStorage.setItem('to-do', JSON.stringify(this.toDo));
-        newItem.value = '';
-        this.listHolder.innerHTML = '';
-        this.getTodo();
-      }
-    });
+  addItem(item) {
+    this.toDo = JSON.parse(localStorage.getItem('to-do'));
+    const listItem = new ItemObj(this.toDo.length, item);
+    this.toDo.push(listItem);
+    localStorage.setItem('to-do', JSON.stringify(this.toDo));
+    this.getTodo();
   }
 
   updateIndex() {
@@ -73,7 +66,6 @@ export default class ToDo {
       del.addEventListener('click', () => {
         this.toDo = this.toDo.filter((item) => item.index !== i);
         localStorage.setItem('to-do', JSON.stringify(this.toDo));
-        this.listHolder.innerHTML = '';
         this.getTodo();
       });
     });
@@ -84,7 +76,6 @@ export default class ToDo {
     this.remove.addEventListener('click', () => {
       this.toDo = this.toDo.filter((item) => item.completed === false);
       localStorage.setItem('to-do', JSON.stringify(this.toDo));
-      this.listHolder.innerHTML = '';
       this.getTodo();
     });
   }
@@ -97,7 +88,6 @@ export default class ToDo {
         refreshBtn.classList.remove('refresh-rotate');
       }, 500);
       localStorage.setItem('to-do', '[]');
-      this.listHolder.innerHTML = '';
       this.getTodo();
     });
   }
@@ -107,6 +97,7 @@ export default class ToDo {
       localStorage.setItem('to-do', JSON.stringify(this.toDo));
     } else {
       this.toDo = JSON.parse(localStorage.getItem('to-do'));
+      this.listHolder.innerHTML = '';
       this.toDo.map((item, index) => {
         this.createItem(item);
         const itemEdit = document.querySelectorAll('.item-edit');
