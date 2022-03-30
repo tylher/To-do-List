@@ -1,23 +1,11 @@
 import ItemObj from './item.js';
 import checkItem from './check.js';
+import createItem from './Create.js';
 
 export default class ToDo {
   constructor() {
     this.toDo = [];
-    this.listHolder = document.querySelector('.holder');
-    this.itemInput = document.querySelector('input');
-    this.enter = document.querySelector('.fa-arrow-right-to-bracket');
     this.remove = document.querySelector('.btn');
-  }
-
-  createItem(item) {
-    const li = document.createElement('li');
-    li.classList.add('to-do-item');
-    li.innerHTML = `<div>${item.completed
-      ? '<input type="checkbox" checked>'
-      : '<input type="checkbox" >'
-    } <input type='text' class='item-edit' value='${item.description}'></div> <div><i class="option fa-solid fa-ellipsis-vertical"></i><i class="fa-solid fa-trash-can"></i></div>`;
-    this.listHolder.appendChild(li);
   }
 
   updateItem() {
@@ -54,7 +42,6 @@ export default class ToDo {
     checked.forEach((check, index) => {
       check.addEventListener('change', () => {
         this.toDo = checkItem(this.toDo, index);
-        this.listHolder.innerHTML = '';
         this.getTodo();
       });
     });
@@ -93,13 +80,14 @@ export default class ToDo {
   }
 
   getTodo() {
+    const listHolder = document.querySelector('.holder');
     if (!localStorage.getItem('to-do')) {
       localStorage.setItem('to-do', JSON.stringify(this.toDo));
     } else {
       this.toDo = JSON.parse(localStorage.getItem('to-do'));
-      this.listHolder.innerHTML = '';
+      listHolder.innerHTML = '';
       this.toDo.map((item, index) => {
-        this.createItem(item);
+        createItem(item);
         const itemEdit = document.querySelectorAll('.item-edit');
         if (item.completed === true) {
           itemEdit[index].style.textDecoration = 'line-through';
